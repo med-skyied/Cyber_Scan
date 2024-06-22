@@ -1,7 +1,7 @@
-Using the SHODAN API.
+This project Leverages the SHODAN API.
 
-### a Cyber Security project, This project will be about a foreinsecs tool.
-This tool will help analysing the web for petential infected devices and systems ( with knows seeeecurity isseues ) around the internet.
+### a Cyber Security project, This project will be a tool to get infromations about the devices in the internet. and will present the data in a Cyber Security Maner.
+This tool will help analysing the web for petential infected devices and systems ( with knows security issues ) around the internet.
 
 ### this will use the shodan API and python trechnologies in the back end.
 

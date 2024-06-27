@@ -6,7 +6,10 @@ function Nopage() {
  return (
     <>
         <NavBarChild />
-        <p>404.</p>
+        <div className='main_container'>
+            <p>404.</p>
+        </div>
+        
     </>
  )
 }

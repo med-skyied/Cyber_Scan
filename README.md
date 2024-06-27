@@ -17,4 +17,5 @@ This tool will help analysing the web for petential infected devices and systems
 
 This is still in active development, this version of README.md file will be updated.
 	
-	
+#### The back-end folder is under: cyber_scan_b-e
+#### The Front-end folder is under: cyber_scan_f-e

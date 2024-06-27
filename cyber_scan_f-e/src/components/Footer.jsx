@@ -4,6 +4,10 @@ import '../App.css'
 
 function Footer() {
 
+    function sys_status() {
+        
+    }
+
     return (
         <>
             <div className="Footer">

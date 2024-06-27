@@ -4,28 +4,52 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
 
+// the app pages
 import Home from './pages/Home';
 import Root from './pages/Root';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import About from './pages/About';
 import Nopage from './pages/Nopage';
+import Contact from './pages/Contact';
+import ResetPassword from './pages/Reset_password';
+
+// the app services
+import FindMyIP from './services/Find_my_ip';
+import CVEsSearch from './services/CVEs_pages';
+import DnsLookUp from './services/Dns_lookup';
+import DomainInfos from './services/Domain_infos';
+import HostInfos from './services/Host_infos';
+import HttpHeaders from './services/Http_headers';
+import SecurityLevel from './services/Security_level';
+
 
 export default function App() {
   return (
     <BrowserRouter>
-   
+
       <Routes>
         <Route>
-          <Route index element={<Root />}/>
+          <Route index element={<Root />} />
           <Route path='/home' element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path='/reset_password' element={<ResetPassword />} />
           <Route path="*" element={<Nopage />} />
+
+          <Route path='/find_my_ip' element={<FindMyIP />} />
+          <Route path='/cve_search' element={<CVEsSearch />}/>
+          <Route path='/dns_lookup' element={<DnsLookUp />} />
+          <Route path='/domain_infos' element={<DomainInfos />} />
+          <Route path='/host_infos' element={<HostInfos />} />
+          <Route path='/http_headers' element={<HttpHeaders />} />
+          <Route path='/security_check' element={<SecurityLevel />} />
+          
         </Route>
       </Routes>
-    
+
     </BrowserRouter>
   );
 }

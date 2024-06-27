@@ -6,6 +6,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .App-logo {
@@ -124,10 +125,122 @@
 }
 .nav_logo {
   width: 130px;
-  
+
 }
 .HomePage {
   display: flex;
   font-size: small;
   color: #333333;
+}
+.auth_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+
+  height: 100vh;
+
+}
+.authSubmitButton {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  height: 30px;
+  width: 60px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.auth_form_holder {
+ margin: 50px;
+ text-align: center;
+}
+.main_container {
+  height: 100vh;
+}
+.input_field {
+
+}
+.to_link {
+  margin-left: 20px;
+}
+.main_services_button{
+  background-color: #0b051e;
+    color: #ff434a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.service_btn_txt {
+  margin: 4px;
+  font-size: small;
+  font-weight: 550;
+}
+.home_serv_header {
+  font-family: Roboto, Arial, sans-serif;
+  line-height: 1.50rem;
+  font-size: .966rem;
+  letter-spacing: .0142857143em;
+  font-weight: 700;
+  font-size: small;
+}
+.home_partitioner_container {
+  height: 140vh;
+  display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+align-content: center;
+align-items: center;
+}
+.service_holder {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    text-align: center;
+    background-color: #ffa700;
+    margin: 20px;
+    border-radius: 3px;
+}
+.service_cve_holder {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    text-align: center;
+    background-color: #d13e04;
+    margin: 20px;
+    border-radius: 3px;
+}
+.inner_holder {
+  margin: 20px;
+}
+.security_level {
+
+}
+.host_infos {
+  
+}
+.dns_lookup {
+  
+}
+.http_headers {
+  
+}
+.domain_infos {
+}
+.find_my_ip {
+  
+}
+.cves_pages {
+  
 }

@@ -7,7 +7,10 @@ function About() {
  return (
     <>
         <NavBarChild />
-        <p>This is the about us page.</p>
+        <div className='main_container'>
+            <p>This is the about us page.</p>
+        </div>
+        
     </>
  )
 }

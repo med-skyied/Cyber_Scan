@@ -18,11 +18,11 @@ import ResetPassword from './pages/Reset_password';
 import FindMyIP from './services/Find_my_ip';
 import CVEsSearch from './services/CVEs_pages';
 import DnsLookUp from './services/Dns_lookup';
-import DomainInfos from './services/Domain_infos';
-import HostInfos from './services/Host_infos';
+import IpHistory from './services/Ipaddress_history';
+import HostInfoGather from './services/Host_info_gather';
 import HttpHeaders from './services/Http_headers';
 import SecurityLevel from './services/Security_level';
-
+import PortScanner from './services/Port_scanning';
 
 export default function App() {
   return (
@@ -42,11 +42,12 @@ export default function App() {
           <Route path='/find_my_ip' element={<FindMyIP />} />
           <Route path='/cve_search' element={<CVEsSearch />}/>
           <Route path='/dns_lookup' element={<DnsLookUp />} />
-          <Route path='/domain_infos' element={<DomainInfos />} />
-          <Route path='/host_infos' element={<HostInfos />} />
+          <Route path='/ipaddress_history' element={<IpHistory />} />
+          <Route path='/host_gather_info' element={<HostInfoGather />} />
           <Route path='/http_headers' element={<HttpHeaders />} />
           <Route path='/security_check' element={<SecurityLevel />} />
-          
+          <Route path='/scan_ports' element={<PortScanner />} />
+
         </Route>
       </Routes>
 

@@ -18,11 +18,11 @@ function Home() {
   function cve_search(){
     navigate('/cve_search');
   }
-  function domain_infos(){
-    navigate('/domain_infos');
+  function ipaddress_history(){
+    navigate('/ipaddress_history');
   }
-  function host_infos(){
-    navigate('/host_infos');
+  function host_info_gathering(){
+    navigate('/host_gather_info');
   }
   function http_headers(){
     navigate('/http_headers');
@@ -30,33 +30,39 @@ function Home() {
   function security_check() {
     navigate('/security_check');
   }
+  function scan_port() {
+    navigate('/scan_ports');
+  }
  return (
     <>
         <NavBar />
         <div className='main_container'>
             <div className='home_partitioner_container'>
+              <section>
+
+              </section>
               <div className='service_holder'>
                 <div className='inner_holder'>
-                <p className='home_serv_header'>Check  the Security Level and the Risk level of your Connection</p>
-                  <h3> Check if am behind a secure Wall (if my VPN or proxy is active or not). <br/>
+                <p className='home_serv_header'>Evaluate your connection</p>
+                  <h3>Check if you are behind a secure Wall (if my VPN or proxy is active or not). <br/>
                   This service will also determin your  own 'risk-level' based on your public ip
                   (this means if most websites or web applications will flag you or not.
-                    to determin that we use your public ip to determin if it's either a
+                    to determin that, we use your public ip to determin if it's either a
                     Residential/Business ip or Non-residential ip.)</h3>
                     <button onClick={security_check} className='main_services_button'><h4 className='service_btn_txt'>Check the risk/security level of my Connection.</h4></button>
                 </div>
                 </div>
               <section className='service_holder'>
                 <div className='inner_holder'>
-                  <p className='home_serv_header'>Host Information</p>
-                  <h3>Returns all services that have been found on the given host IP</h3>
-                  <button onClick={host_infos} className='main_services_button'><h3 className='service_btn_txt'>Get foreinsic infos about a host name</h3></button>
+                  <p className='home_serv_header'>Target Precise information gathering</p>
+                  <h3>This tool will gather sumorized data about your target, it gets data from popular search engines. Will help you alot in the information gathering phase.</h3>
+                  <button onClick={host_info_gathering} className='main_services_button'><h3 className='service_btn_txt'>Gather informations about your target</h3></button>
                 </div>
                 </section>
               <section className='service_holder'>
                 <div className='inner_holder'>
                   <p className='home_serv_header'>DNS Lookup</p>
-                  <h3>Look up the IP address for the provided list of hostnames., examle: 'google.com ...'</h3>
+                  <h3>Look up the IP address for the provided domain names'</h3>
                   <button onClick={dns_lookup} className='main_services_button'><h3 className='service_btn_txt'>Dns Lookup</h3></button>
                 </div>
                 </section>
@@ -70,10 +76,10 @@ function Home() {
                 </section>
               <section className='service_holder'>
                 <div className='inner_holder'>
-                  <p className='home_serv_header'>Domain Information</p>
-                  <h3> One of the most important steps to gether informations about a server online is to get all the subdomains
-                  and other DNS entries for the given domain. </h3>
-                  <button onClick={domain_infos} className='main_services_button'><h3 className='service_btn_txt'>Get Domain data about a Server</h3></button>
+                  <p className='home_serv_header'>IP Address History</p>
+                  <h3> One of the most important steps to gather infotmations about a target is to observe the history of the assigned ip address,
+                  This is important in forensics analysis. </h3>
+                  <button onClick={ipaddress_history} className='main_services_button'><h3 className='service_btn_txt'>Get Domain data about a Server</h3></button>
                 </div>
                 </section>
               <section className='service_holder'>
@@ -83,6 +89,17 @@ function Home() {
                      to be added in the future</h3>
                     <button className='main_services_button' onClick={find_my_ip} ><h3 className='service_btn_txt'>Show my current IP address as seen in the Internet</h3></button>
                   </div>
+                </section>
+                <section>
+                <div className='service_holder'>
+                  <div className='inner_holder'>
+                  <p className='home_serv_header'>Scan a target for open common ports</p>
+                    <h3> Scan your target for open ports you can exploit. provide eaither an ip address in case of a server
+                      or a domain name in case of webservers.
+                    </h3>
+                      <button onClick={scan_port} className='main_services_button'><h4 className='service_btn_txt'>Scan a target</h4></button>
+                  </div>
+                </div>
                 </section>
               <section className='service_cve_holder'>
                 <div className='inner_holder'>

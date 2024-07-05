@@ -79,6 +79,12 @@
   position: fixed;
   left: 0;
   text-align: center;
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 .navBar {
   color: rgb(255, 255, 255);
@@ -225,22 +231,247 @@ align-items: center;
   margin: 20px;
 }
 .security_level {
-
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-.host_infos {
-  
+.host_infogather_container {
+  display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+height: 100vh;
+align-content: center;
+}
+.host_infogather_subcontainer {
+  width: 80%
+}
+.host_infogather_form {
+  text-align: center;
+}
+.results_info_gather {
+  margin-top: 10px;
+  align-self: baseline;
+}
+.searchParamsDiv {
+  background-color: red;
+  margin: 10px;
+}
+.organicParamsspan {
+  background-color: green;
+  margin: 10px;
 }
 .dns_lookup {
-  
+  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.dns_lookup_container {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.form_dnslookup {
+  text-align: center;
 }
 .http_headers {
-  
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
-.domain_infos {
+.ip_history {
+  display: flex;
+  flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.ip_history_holder {
+  width: 80%;
+}
+.ip_history_result{
+  width: 80%
+}
+.ip_history_form {
+  text-align: center;
+}
+.welcome_header {
+  color: #14bbe7;
+  font-size: small;
+}
+.browser_data_reveal {
+  align-items: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+color: red;
 }
 .find_my_ip {
-  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
 }
 .cves_pages {
-  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100vh;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.cve_inner_holder {
+  width: 80%;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.cve_input_form {
+  text-align: center;
+}
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+.security_details_holder {
+  display: contents;
+}
+.security_result_div {
+  width: 80%;
+  /*background-color: #f7f7f7;*/
+  margin: 13px;
+  border-radius: 6px;
+}
+.security_res_headers {
+    font-size: small;
+    font-weight: 700;
+    color: #5b4e30;
+    margin-right: 4px;
+}
+.actual_ip {
+  font-size: small;
+    font-weight: 700;
+    color: #5b4e30;
+    margin-right: 4px;
+}
+.sec_res_holder {
+  margin: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.sec_res_title {
+  text-align: center;
+   font-weight: 700;
+  color: blrgb(241, 255, 50)
+}
+.res_line {
+  margin: 12px;
+}
+.security_check_btn {
+  background-color: #f7a344;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 44px;
+}
+.sec_div_btn_text{
+  margin: 10px;
+}
+.header_key {
+  margin-right: 10px;
+  font-size: small;
+    font-weight: 700;
+    color: #5b4e30;
+    margin-right: 4px;
+}
+.header_value {
+  margin-left: 10px;
+}
+.green-dot {  /* use on empty div */
+   width: 15px;
+   height: 15px;
+   background: #00FF00;
+   border-radius: 50%;
+ }
+.red-dot {  /* use on empty div */
+   width: 15px;
+   height: 15px;
+   background: #ff1d1d;
+   border-radius: 50%;
+ }
+ .sys_status_txt {
+   margin-right: 10px
+ }
+.about_app_holder {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.about_app_container {
+  width: 80%
+}
+.target_scan_container {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.target_scan_subcontainer {
+  width: 80%
+}
+.port_scan_form {
+  text-align: center
+
+}
+.contact_container {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.contact_form {
+  width: 80%
 }

@@ -10,7 +10,7 @@ function NavBar(){
             <div className="navBar">
                 <img alt="cyber_scan_logo" src={cyber_scan_logo} className="nav_logo"/>
                 <ul>
-                    <li><Link to='/about'><a>About Us</a></Link></li>
+                    <li><Link to='/about'><a>About This App</a></Link></li>
                     <li><Link to='/contact'><a>Contact Us</a></Link></li>
                     <li><Link to='/login'><a>Login</a></Link></li>
                     <li><Link to='/register'><a>Register</a></Link></li>

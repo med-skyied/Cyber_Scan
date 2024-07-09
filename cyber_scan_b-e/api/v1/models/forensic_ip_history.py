@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-""" this module handles the retreival of the services
-    found at a target IP address, using the shodan API"""
+""" this module handles the retreival of the IP history
+    of a given target host name (domain name)"""
 
 import os
 import requests
 import json
 
 def ip_address_history(supplied_hostname):
-    """ retreives services found at a host IP address """
-    view_dns_api = os.getenv('VIEW_DNS_API')
+    """ retreives the history of a given ip or host name """
+    view_dns_api = os.getenv('VIEW_DNS_KEY')
     print(view_dns_api)
 
     ip_history_base_url = 'https://api.viewdns.info/iphistory/?domain='
@@ -20,6 +20,8 @@ def ip_address_history(supplied_hostname):
         final_data = json.loads(data)
         # now parsing the data to return a valid response, + constructing the error handelling of the response.
 
+        # we needto process the data and hanlde errors befour we return it
+        return final_data
     except requests.exceptions.RequestException as e:
         print('error occured: {}'.format(e))
         return {'data': e}
@@ -29,7 +31,7 @@ def ip_address_history(supplied_hostname):
 
 if __name__ == "__main__":
     """ the entry if executed as a direct script """
-    domain_name= 'auvaservices.com' # cnn hostname
+    domain_name= 'x.com'
     res = ip_address_history(domain_name)
     print(res.__class__)
     print(res)

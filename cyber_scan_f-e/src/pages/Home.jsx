@@ -5,9 +5,14 @@ import { useNavigate } from 'react-router-dom';
 //importing the main components.
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import NavBarChildLogin from '../components/NavBarChildLogin';
 
 function Home() {
   const navigate = useNavigate();
+
+  // determing the authentication state of the user.
+  const user_authenticated = false;
+
 
   function find_my_ip(){
     navigate('/find_my_ip');
@@ -33,9 +38,20 @@ function Home() {
   function scan_port() {
     navigate('/scan_ports');
   }
+  // defining the user auth state function
+
+  function userAuthState(){
+    if (user_authenticated){
+      return (<NavBarChildLogin />)
+    } else {
+      return (<NavBar />)
+    }
+  }
+
  return (
     <>
-        <NavBar />
+        {userAuthState()}
+
         <div className='main_container'>
             <div className='home_partitioner_container'>
               <section>
@@ -103,9 +119,9 @@ function Home() {
                 </section>
               <section className='service_cve_holder'>
                 <div className='inner_holder'>
-                  <p className='home_serv_header'>Private for Registered users</p>
-                  <h4>Retreive informations about CVEs (Common Vulnerabilities Exposure) that have been patched or still active. search is filtered by the year. </h4>
-                      <button onClick={cve_search} className='main_services_button'><h3 className='service_btn_txt'>Show active and patched CVEs</h3></button>
+                  <p className='home_serv_header'>CVE Search (Private for Registered users)</p>
+                  <h4>Retreive informations about CVEs (Common Vulnerabilities Exposure) that have been patched or still active. We provide multiple search criterias. </h4>
+                      <button onClick={cve_search} className='main_services_button'><h3 className='service_btn_txt'>Search for CVEs data</h3></button>
                   </div>
                 </section>
           </div>

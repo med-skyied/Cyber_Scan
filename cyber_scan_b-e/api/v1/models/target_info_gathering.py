@@ -37,7 +37,9 @@ def gather_target_info(supplied_target):
         organic_objec = data_obj['organic']
         search_params =  data_obj['searchParameters']
         images_obj = {}
+        images_obj['status'] = 'Failed' # failed by default
         top_stories_obj = {}
+        top_stories_obj['status'] = 'Failed' # failed by default
 
         # now we distinguish for other usefull keys(if they exist) like ('images', 'topStories', '')
         # so we will look for two additional keys wich are: 'images' and 'topStories'
@@ -47,12 +49,16 @@ def gather_target_info(supplied_target):
         i = 0
         while i < len(keys_list):
             if keys_list[i] == 'images':
-                images_obj = data_obj[keys_list[i]]
+                images_obj['data'] = data_obj[keys_list[i]]
             #    print('images is of type: {}'.format(images_obj.__class__))
                 print('we got images')
+                images_obj['status'] = 'OK'
+                print(images_obj) # will be deleted later
             elif keys_list[i] == 'topStories':
-                top_stories_obj = data_obj[keys_list[i]]
+                top_stories_obj['data'] = data_obj[keys_list[i]]
                 print('we got top stories')
+                top_stories_obj['status'] = 'OK'
+                print(top_stories_obj) # for dubugging purposes only
             i = i + 1
 
 

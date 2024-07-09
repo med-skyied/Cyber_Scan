@@ -16,7 +16,7 @@ import ResetPassword from './pages/Reset_password';
 
 // the app services
 import FindMyIP from './services/Find_my_ip';
-import CVEsSearch from './services/CVEs_pages';
+import CVEsSearch from './services/Cves_search';
 import DnsLookUp from './services/Dns_lookup';
 import IpHistory from './services/Ipaddress_history';
 import HostInfoGather from './services/Host_info_gather';

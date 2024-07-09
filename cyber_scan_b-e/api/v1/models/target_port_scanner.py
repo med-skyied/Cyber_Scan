@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-""" this model uses an external api to scan for 
+""" this model uses an external api to scan for
     open known ports on a given target """
 
 import requests
 import json
 import os
 
-def port_scanner(hostname):
-    """ scans targets open ports, using an API """
+def scan_port(hostname):
+    """ scan target cummon open ports, using an API """
 
     api_key = os.getenv('VIEW_DNS_KEY')
     host = hostname
@@ -16,12 +16,13 @@ def port_scanner(hostname):
     try:
         res = requests.get(full_url)
         data = json.loads(res.content.decode('utf-8'))
-        print(data)
+        return data
     except requests.exceptions.RequestException as e:
         return print('request error occured: {}'.format(e))
     except requests.exceptions.HTTPError as e:
         return print('http error occured: {}'.format(e))
 
 if __name__ == "__main__":
-    hostname = 'cnn.com'
-    port_scanner(hostname)
+    hostname = 'kjhdfkjshdf'
+    result = scan_port(hostname)
+    print(result)

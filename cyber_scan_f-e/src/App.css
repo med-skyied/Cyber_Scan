@@ -164,7 +164,14 @@
  text-align: center;
 }
 .main_container {
-  height: 100vh;
+
+  height: 100%;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+align-items: center;
 }
 .input_field {
 
@@ -192,15 +199,21 @@
   font-weight: 700;
   font-size: small;
 }
+
 .home_partitioner_container {
-  height: 140vh;
+  /*height: 100%;*/
+  min-height: calc(100vh - 50px);
+
   display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
-align-content: center;
-align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 110px;
 }
+
+
 .service_holder {
   display: flex;
     flex-direction: column;
@@ -241,25 +254,51 @@ align-items: center;
 }
 .host_infogather_container {
   display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-height: 100vh;
-align-content: center;
+    flex-direction: column;
+    /* height: 100vh; */
+    /* flex-wrap: wrap; */
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    /* width: 80%; */
+    margin-top: 150px;
+    margin-bottom: 40px;
 }
 .host_infogather_subcontainer {
-  width: 80%
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .host_infogather_form {
   text-align: center;
 }
 .results_info_gather {
-  margin-top: 10px;
-  align-self: baseline;
+  margin: 20px;
+    /* align-self: baseline; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-bottom: 150px;
+}
+.search_overview_res_gather {
+  background-color: #ff4444;;
+}
+.organic_search_res {
+  width: 80%;
+}
+.organicResultDiv {
+  margin: 20px;
 }
 .searchParamsDiv {
-  background-color: red;
+
   margin: 10px;
 }
 .organicParamsspan {
@@ -299,17 +338,20 @@ align-content: center;
 .ip_history {
   display: flex;
   flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  horizontal-align: block;
+
+  min-height: 100vh;
 }
 .ip_history_holder {
   width: 80%;
 }
 .ip_history_result{
-  width: 80%
+  width: 80%;
+  margin-bottom: 150px;
 }
 .ip_history_form {
   text-align: center;
@@ -348,7 +390,7 @@ color: red;
 }
 .cve_inner_holder {
   width: 80%;
-  display: flex;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
@@ -357,6 +399,7 @@ color: red;
 }
 .cve_input_form {
   text-align: center;
+  margin: 9px;
 }
 html {
   height: 100%;
@@ -405,7 +448,7 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    height: 44px;
+    height: 35px;
 }
 .sec_div_btn_text{
   margin: 10px;
@@ -449,12 +492,13 @@ body {
 }
 .target_scan_container {
   display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+flex-direction: column;
+align-content: center;
+justify-content: center;
+align-items: center;
+min-height: 100%;
+/* width: 80%; */
+margin-bottom: 110px;
 }
 .target_scan_subcontainer {
   width: 80%
@@ -474,4 +518,221 @@ body {
 }
 .contact_form {
   width: 80%
+}
+.image_cls {
+  height: 240px;
+  width: auto;
+}
+.images_place_holder {
+  margin: 10px;
+}
+
+.images_search_prgf {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 10px;
+
+}
+.images_inner_holder {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.topstoris_image_elem {
+  height: 120px;
+  width: auto;
+}
+.top_stories_holder_div {
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.topstory_res_elem {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    margin: 30px;
+}
+.top_stories_search_res {
+  width: 80%;
+}
+.appended_header {
+  font-size: 770;
+  color: red;
+  text-align: center;
+}
+.dns_lookup_res {
+
+}
+.dns_lookup_holder {
+  margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.dns_elem_lookup_holder {
+  margin: 10px;
+    width: 230px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+.ip_history_error_found {
+  display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+}
+.ip_history_error_header {
+  color: red;
+  font-size: small;
+}
+.ip_history_div {
+  width: 80%;
+}
+.ip_history_res_holder_succ {
+  display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+align-items: center;
+margin: 20px;
+}
+.iph_res_elem_holder {
+  margin: 5px;
+    width: 210px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+.performance_notice {
+  color: green;
+  text-align: center;
+}
+.port_scan_element {
+  width: 170px;
+margin: 10px;
+background-color: #f9f9f9;
+border-radius: 6px;
+}
+.port_scan_holder_div {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.ps_result_holder {
+  margin: 20px;
+}
+.middle_div_holder {
+  width: 80%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+.common_button {
+  background-color: #f7a344;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 35px;
+}
+.port_scanner_error_header {
+  color: red;
+  font-size: small;
+  text-align: center;
+  margin: 20px;
+}
+.navBarChildLogin {
+  display: flex;
+color: rgb(255, 255, 255);
+/* background-color: rgb(92, 86, 86); */
+height: 40px;
+background-color: gray;
+position: relative;
+width: 100%;
+text-align: center;
+margin: 0;
+padding: 0;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: space-around;
+align-items: center;
+}
+.cve_not_auth_div {
+  display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+.main_parag_not_auth {
+  color: red;
+}
+.button_log_out {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px;
+}
+.logout_txt {
+  font-weight: bold;
+  font-size: small;
+}
+.cves_data_entry_field {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.cve_search_option_elem {
+  width: 250px;
+    background-color: whitesmoke;
+    margin: 10px;
+    border-radius: 4px;
+}
+.first_notes {
+  display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+align-items: center;
+}
+.cve_warning_note {
+  color: red;
 }

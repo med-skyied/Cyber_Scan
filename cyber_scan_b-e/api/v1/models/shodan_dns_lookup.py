@@ -7,7 +7,7 @@ import os
 import requests
 import json
 
-def host_details(supplied_domains):
+def dns_lookup_details(supplied_domains):
     """ retreives the DNS resolvers for the supplied domain names.
         in the corresponding view, Check for the status_code object key.
          to define the next behaviour"""
@@ -48,7 +48,7 @@ def host_details(supplied_domains):
         res = requests.get(viewdns_url, stream=True)
         data = res.content.decode('utf-8')
         data_res = json.loads(data)
-        print(data_res) # just printing for now.
+        return data_res
     except requests.exceptions.RequestException as e:
         return print('request error occured: {}'.format(e))
     except requests.exceptions.HTTPError as e:
@@ -59,5 +59,5 @@ if __name__ == "__main__":
     # the shodan api supports a list of domain names, but view dns is not.
     # for now the script uses the view dns.
     supplied_domains= ['google.com']
-    obj = host_details(supplied_domains)
+    obj = dns_lookup_details(supplied_domains)
     print(obj)

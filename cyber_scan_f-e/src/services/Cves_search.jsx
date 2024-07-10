@@ -20,73 +20,116 @@ export default function CVEsSearch() {
       navigate('/login');
     }
 
+    
+
 
     if (userAuthenticated){
 
 
-
+     
 
 
 
       let api_end_point = 'http://localhost:5000/api/v1/';
 
-      let div_cve_result_holder = document.getElementById('cve_result_div');
-
+      
       // in here we gonna define the functions that performs the requested operations.
       //current DB informations.
+
+      
+
       async function get_Current_db_info(event){
         event.preventDefault();
         console.log('getting the current DB infos');
         //each time we clear the html content of the result holder <div>
 
+        let div_cve_result_holder = document.getElementById('cve_result_div');
+        div_cve_result_holder.innerHTML=``;
 
-        try{
+        try {
           setIsButtonDisabled(true);
           let response = await axios.get(api_end_point.concat('cve_db_infos'));
-          let data = response['data'];
+          let data = response.data;
           console.log(data);
-          // now we handle the data population.
-          let obj_keys = Object.keys(data);
-          let indx = obj_keys.length;
-          //console.log('list keys are: ' + obj_keys);
-          let i  = 0 ;
-          let cve_db_elem_holder = document.createElement('div');
-          cve_db_elem_holder.setAttribute('class', 'cve_db_elem_holder')
-          for (let i in obj_keys){
-            console.log(obj_keys[i]);
-            let cve_db_elem_div = document.createElement('div');
-
-            let cve_db_element_parag = document.createElement('div');
-            cve_db_element_parag.setAttribute('class', 'cve_db_elem_parag');
-            cve_db_elem_holder.appendChild(cve_db_element_parag);
-            Object.entries(data[obj_keys[i]]).forEach(([key, value]) => {
-              console.log( key + ' : ' + value);
-              cve_db_element_parag.innerHTML = `<div>${data[obj_keys[i]]}</div> <div><span>${key} : ${value}</span></div>`;
-              cve_db_elem_holder.appendChild(cve_db_element_parag);
-
-              cve_db_elem_div.appendChild(cve_db_elem_holder);
+        
+          // Clear previous content in div_cve_result_holder, if necessary
+          div_cve_result_holder.innerHTML = '';
+        
+          // Iterate over the keys in data
+          Object.keys(data).forEach(key => {
+            console.log(key);
+            let cve_db_elem_holder = document.createElement('div');
+            cve_db_elem_holder.setAttribute('class', 'cve_db_elem_holder');
+        
+            // Create header element for the key
+            let headerElement = document.createElement('div');
+            headerElement.setAttribute('class', 'cve_db_elem_header');
+            headerElement.textContent = key;
+        
+            cve_db_elem_holder.appendChild(headerElement);
+        
+            // Create container for entries
+            let entriesContainer = document.createElement('div');
+            entriesContainer.setAttribute('class', 'cve_db_entries_container');
+        
+            // Iterate over the properties of each object
+            Object.entries(data[key]).forEach(([propKey, propValue]) => {
+              console.log(propKey + ' : ' + propValue);
+              let entryElement = document.createElement('div');
+              entryElement.setAttribute('class', 'cve_db_entry');
+              entryElement.innerHTML = `<span>${propKey} : ${propValue}</span>`;
+              entriesContainer.appendChild(entryElement);
             });
-
-
-            //i++;
+        
+            cve_db_elem_holder.appendChild(entriesContainer);
             div_cve_result_holder.appendChild(cve_db_elem_holder);
-          }
-
-
-          setIsButtonDisabled(false);
+          });
+        
+        } catch (error) {
+          console.error('Error fetching or processing data:', error);
+        } finally {
+          setIsButtonDisabled(false); // Ensure button is re-enabled regardless of success or failure
         }
-        catch (error){
-          console.log(error);
-        }
-
 
       }
 
       //vendor names.
-      function get_vendor_names(event){
+      async function get_vendor_names(event){
         event.preventDefault();
         console.log('getting the aafected vendor names...');
 
+        let div_cve_result_holder = document.getElementById('cve_result_div');
+        div_cve_result_holder.innerHTML=``;
+
+        try {
+          setIsButtonDisabled(true);
+          let response = await axios.get(api_end_point.concat('vendors_affected'));
+          let data = response.data;
+          console.log(data);          
+          // this is a list.
+
+          let vendor_list_holder = document.createElement('div');
+          vendor_list_holder.setAttribute('class', 'vendor_list_holder');
+
+         let vendor_name_num_holder = document.createElement('div');
+         vendor_name_num_holder.setAttribute('class', 'vendor_name_num_holder');
+         vendor_name_num_holder.innerHTML = `<div>We got : ${data.length} affected vendors:</div>`;
+         vendor_list_holder.appendChild(vendor_name_num_holder);
+          for (let i in data){ // this gets the indexes
+            let vendor_elem_div = document.createElement('div');
+            vendor_elem_div.setAttribute('class', 'vendor_elem_div');
+            vendor_elem_div.innerHTML = `<div>${data[i]}</div>`;
+            vendor_list_holder.appendChild(vendor_elem_div);
+
+          }
+          //div_cve_result_holder.innerHTML = `<div>We got : ${data.length} afected vendors:</div>`;
+          div_cve_result_holder.appendChild(vendor_list_holder);
+
+        } catch (error) {
+          alert(error);
+        } finally {
+          setIsButtonDisabled(false);
+        }
 
       }
 
@@ -158,7 +201,7 @@ export default function CVEsSearch() {
                           </div>
 
 
-                          <div id='cve_result_div'></div>
+                          <div id='cve_result_div' className="cve_holder_div"></div>
 
 
 

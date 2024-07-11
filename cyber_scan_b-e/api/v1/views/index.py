@@ -162,3 +162,36 @@ def current_dbs_infos():
         return make_response(db_result_data, 200)
     else:
         return make_response(jsonify({'error': 'Internal Server Error'}), 500)
+
+# adding the register view end-point
+ # to be done later
+
+
+# adding the login view end-point
+@app_views.route('/login', methods=['POST'],
+                strict_slashes=False)
+def handle_login():
+    """ this function handles the mock login (for now only one user is allowed and the creds are hardcoded) \
+        this was done because of time constrainghts but must be removed and replaced with a real auth system later."""
+    # no model was created for this endpoint.
+    if not request.is_json:
+        abort(404, 'not a Json')
+    # now checking the plain text value of the predetermined password
+    supplied_data = request.get_json()
+
+    supplied_email_username = supplied_data['hard_username']
+    supplied_password = supplied_data['hard_password']
+
+    hard_password = 'admin20240711'
+    hard_username = 'cyber_admin'
+    hard_email = 'admin@cyberscanamch.com' 
+
+    if (supplied_email_username == hard_email or supplied_email_username == hard_username):
+        if supplied_password == hard_password:
+            """ now we authenticate the user """
+            return make_response(jsonify({'login_status': 'accepted'}), 200)
+        else:
+            return make_response(jsonify({'login_status': 'refused'}), 200)
+
+    else:
+        return make_response(jsonify({'login_status': 'refused'}), 200)

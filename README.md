@@ -82,9 +82,11 @@ This project provides the following services to it's users:
 
 	you can set these variuables by creating anaccount on theire websites then get your key and use this command: $ export [variable_name]=[variable value (make sure to use '' (as these values are strings))] 
 
-#### Note: because of time constrainght i havent implemented a real authentication system, the app now can be accessed via this credentials:
-	username: cyber_admin
+#### Note: Because of time constraints I haven't implemented a real authentication system, this app can be accessed via these credentials:</span>
+	email/username: admin@cyberscanamch.com || cyber_admin 
 	password: admin20240711
+
+
 
 
 ##### Developed by: [mohamed amouch] [skyied.med2023@gmail.com] (software engineering student)

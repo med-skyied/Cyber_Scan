@@ -1,49 +1,49 @@
-import React from "react";
-import '../App.css'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import "../App.css";
+import axios from "axios";
 
 function Footer() {
+  const [systemStatus, setSystemStatus] = useState(null);
 
-    function sys_status() {
-        const apiEndPoint = 'http://localhost:5000/api/v1/';
-        axios.get(apiEndPoint.concat('/status')).then(res => {
-          //api responds correctelly
-          let status = res.data['sys_status']
-          //console.log(status)
-          if (status === "Success"){
-            // set the status to sustem is okay
-            //console.log('inside success')
-            let status_parag = document.getElementById('status_holder');
-            status_parag.innerHTML = '<span class="system_status_ok" style="color: #00FF00;">&nbsp;All systems are operational.</span>'
-            let dot_holder = document.getElementById('status_dot');
-            dot_holder.innerHTML = '<div class="green-dot"></div>';
-          }
-          else {
-            console.log("api errors were found");
-            let status_parag = document.getElementById('status_holder');
-            status_parag.innerHTML = '<span class="system_status_failed" style="color: red">&nbsp;API endpoints are not responding.</span>' ;
-            let dot_holder = document.getElementById('status_dot');
-            dot_holder.innerHTML = '<div class="red-dot"></div>';
-          }
-        }).catch(error => {
-          //erors in the api
-          console.log("api errors were found");
-          let status_parag = document.getElementById('status_holder');
-          status_parag.innerHTML = '<span class="system_status_failed" style="color: red">&nbsp;API endpoints are not responding.</span>' ;
-          let dot_holder = document.getElementById('status_dot');
-          dot_holder.innerHTML = '<div class="red-dot"></div>';
-        })
+  useEffect(() => {
+    fetchSystemStatus();
+  }, []);
+
+  async function fetchSystemStatus() {
+    const apiEndPoint = "http://localhost:5000/api/v1/";
+    try {
+      const response = await axios.get(apiEndPoint.concat("/status"));
+      const status = response.data.sys_status;
+      setSystemStatus(status);
+    } catch (error) {
+      console.error("API errors were found:", error);
+      setSystemStatus("failed");
     }
+  }
 
-    return (
-        <>
-          {sys_status()}
-            <div className="Footer">
-
-                <span className='sys_status_txt'>System Status: </span> <div id='status_dot'></div><div id='status_holder'></div>
-
-            </div>
-        </>
-    )
+  return (
+    <div className="Footer">
+      <span className="sys_status_txt">System Status:</span>
+      <div id="status_dot">
+        {systemStatus === "Success" ? (
+          <div className="green-dot"></div>
+        ) : (
+          <div className="red-dot"></div>
+        )}
+      </div>
+      <div id="status_holder">
+        {systemStatus === "Success" ? (
+          <span className="system_status_ok">
+            &nbsp;All systems are operational.
+          </span>
+        ) : (
+          <span className="system_status_failed">
+            &nbsp;API endpoints are not responding.
+          </span>
+        )}
+      </div>
+    </div>
+  );
 }
-export default Footer
+
+export default Footer;

@@ -74,4 +74,9 @@ This project provides the following services to it's users:
 ##### The back-end folder is under: cyber_scan_b-e/
 ##### The front-end folder is under: cyber_sca_f-e/
 
-#### Developed by: [mohamed amouch] [skyied.med2023@gmail.com] (software engineering student)
+#### Note: because of time constrainght i havent implemented a real authentication system, the app now can be accessed via this credentials:
+	username: cyber_admin
+	password: admin20240711
+
+
+##### Developed by: [mohamed amouch] [skyied.med2023@gmail.com] (software engineering student)

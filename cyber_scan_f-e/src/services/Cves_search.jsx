@@ -12,7 +12,22 @@ import NavBarChildLogin from '../components/NavBarChildLogin';
 export default function CVEsSearch() {
 
     // determing if the user islogged in. (get the user login_status via the local storage variable)
-    let userAuthenticated = true; // user is not logged  (demo only)
+
+    function isUserAuthenticated(){
+      let auth_state_hash_code = localStorage.getItem('user_auth_state'); // to get a cookie by the name from the browser.
+      //$.cookie('obligations', 'new_value'); // this is to write a cookie with name and value in the browser.
+      console.log('first thing to show');
+
+      let auth_state_hard_string = 'YTER4341112!@#$!SDFCCYBRT_SCAN&&$$%@#$@#%TGDSF$@C%%&N)^N$%VWQCR$R';
+      if (auth_state_hash_code === auth_state_hard_string){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    
+    let userAuthenticated = isUserAuthenticated(); //a funtion toreturn true of false for the value of the user authentication.
     const navigate = useNavigate();
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 

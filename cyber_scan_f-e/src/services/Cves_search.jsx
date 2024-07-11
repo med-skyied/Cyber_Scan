@@ -134,16 +134,244 @@ export default function CVEsSearch() {
       }
 
       //vendors affected products.
-      function get_vendor_products(event){
+      async function get_vendor_products(event){
         event.preventDefault();
         console.log('getting the provided vendor affected software...');
 
+       
 
+
+        let supplied_vendor = document.getElementById('supp_vendor_name').value;
+        console.log('we are looking for: ' + supplied_vendor);
+        
+        // constructing the requisted object.
+        let req_obj = {};
+        req_obj['vendor_name'] = supplied_vendor;
+        //now requesting the back-end for the resources.
+
+         // celar the result holder parag.
+        let div_cve_result_holder = document.getElementById('cve_result_div');
+        div_cve_result_holder.innerHTML=``;
+
+        try {
+          setIsButtonDisabled(true);
+          let response = await axios.post(api_end_point.concat('vendors_affected_products'), req_obj);
+          let data = response.data;
+      
+          let ven_products_holder = document.createElement('div');
+          ven_products_holder.setAttribute('class', 'vendor_list_holder');
+      
+          let ven_product_num_holder = document.createElement('div');
+          ven_product_num_holder.setAttribute('class', 'vendor_name_num_holder');
+          ven_product_num_holder.innerHTML = `<div>This vendor has : ${data.length} affected product (this is the history of the affected products).</div>`;
+      
+          ven_products_holder.appendChild(ven_product_num_holder);
+      
+          for (let i in data) {
+              let vendor_product_elem = document.createElement('div');
+              vendor_product_elem.setAttribute('class', 'vendor_elem_div');
+              vendor_product_elem.innerHTML = `<div>${data[i]}</div>`;
+              ven_products_holder.appendChild(vendor_product_elem);
+          }
+      
+          div_cve_result_holder.appendChild(ven_products_holder); // Ensure ven_products_holder is appended to div_cve_result_holder
+      
+      } catch (error) {
+          console.log(error);
+          // Handle error as needed
+          alert('The vendor name you supplied was not found on our systems, try another vendor name or try again later.');
+      } finally {
+          setIsButtonDisabled(false);
       }
-      //data by cve_id.
-      function data_by_cve_id(event){
+      
+      }
+
+
+      //get data by cve_id.
+      async function data_by_cve_id(event){
         event.preventDefault();
         console.log('getting infos about the specified CVE-Id...');
+
+        let supplied_cve_id = document.getElementById('supp_cve_id').value;
+
+        console.log('we have got this cve_id : ' + supplied_cve_id);
+
+        //clering the result holder.
+        let div_cve_result_holder = document.getElementById('cve_result_div');
+        div_cve_result_holder.innerHTML=``;
+
+        let supp_cve_id_obj = {};
+        supp_cve_id_obj['cve_id'] = supplied_cve_id;
+
+       try {
+            setIsButtonDisabled(true);
+            let response = await axios.post(api_end_point.concat('search_cve_by_id'), supp_cve_id_obj);
+            let data = response.data;
+        
+            let keysToIgnore = ['vulnerable_configuration_cpe_2_2', 'vulnerable_configuration'];
+
+            // Function to check if a key should be ignored
+        const shouldIgnoreKey = (key) => {
+          return keysToIgnore.includes(key);
+      };
+
+     
+      // Function to create and append an element to the result holder
+      const appendToResultHolder = (key, value) => {
+        let element = document.createElement('div');
+        element.classList.add('result-item');
+
+        // Apply different styling for keys and values
+        let keyElement = document.createElement('div');
+        keyElement.classList.add('result-key');
+        keyElement.textContent = `${key} :`;
+        element.appendChild(keyElement);
+
+        // Apply margin-left style to distinguish sub items
+        if (key !== 'references' && key !== 'capec') {
+            element.style.marginLeft = '10px';
+        }
+
+        // Handling special keys in here.
+        if (key === 'references') {
+            let referencesDiv = document.createElement('div');
+            referencesDiv.classList.add('reference-links');
+            //referencesDiv.innerHTML = `<strong>${key}:</strong>`;
+            value.forEach(ref => {
+                let refLink = document.createElement('a');
+                refLink.setAttribute('href', ref);
+                refLink.setAttribute('target', '_blank');
+                refLink.textContent = ref;
+                referencesDiv.appendChild(refLink);
+                referencesDiv.appendChild(document.createElement('br')); // Add line break
+            });
+            element.appendChild(referencesDiv);
+        } else if (key === 'capec') {
+            // Handle capec key (iterate through dictionaries)
+            let capecDiv = document.createElement('div');
+            capecDiv.classList.add('capec-section');
+            //capecDiv.innerHTML = `<strong>${key}:</strong>`;
+            Object.keys(value).forEach(capecKey => {
+                let capecItemDiv = document.createElement('div');
+                capecItemDiv.classList.add('capec-item');
+                capecItemDiv.style.marginLeft = '10px';
+                capecItemDiv.innerHTML = `<strong>${capecKey}:</strong>`;
+                let capecSubDict = value[capecKey];
+                Object.keys(capecSubDict).forEach(subKey => {
+                    let subItemElement = document.createElement('div');
+                    subItemElement.classList.add('capec-subitem');
+                    subItemElement.innerHTML = `<strong class='capec-subitem-key'>${subKey}:</strong> ${capecSubDict[subKey]}`;
+                    capecItemDiv.appendChild(subItemElement);
+                });
+                capecDiv.appendChild(capecItemDiv);
+            });
+            element.appendChild(capecDiv);
+        } else if (key === 'msbulletin'){
+          // Handle msbulletin key (iterate through dictionaries)
+          let capecDiv = document.createElement('div');
+          capecDiv.classList.add('capec-section');
+          //capecDiv.innerHTML = `<strong>${key}:</strong>`;
+          Object.keys(value).forEach(capecKey => {
+              let capecItemDiv = document.createElement('div');
+              capecItemDiv.classList.add('capec-item');
+              capecItemDiv.style.marginLeft = '10px';
+              capecItemDiv.innerHTML = `<strong>${capecKey}:</strong>`;
+              let capecSubDict = value[capecKey];
+              Object.keys(capecSubDict).forEach(subKey => {
+                  let subItemElement = document.createElement('div');
+                  subItemElement.classList.add('capec-subitem');
+                  subItemElement.innerHTML = `<strong class='capec-subitem-key'>${subKey}:</strong> ${capecSubDict[subKey]}`;
+                  capecItemDiv.appendChild(subItemElement);
+              });
+              capecDiv.appendChild(capecItemDiv);
+          });
+          element.appendChild(capecDiv);
+        } else if (key === 'oval'){
+          // Handle oval key (iterate through dictionaries)
+          let capecDiv = document.createElement('div');
+          capecDiv.classList.add('capec-section');
+          //capecDiv.innerHTML = `<strong>${key}:</strong>`;
+          Object.keys(value).forEach(capecKey => {
+              let capecItemDiv = document.createElement('div');
+              capecItemDiv.classList.add('capec-item');
+              capecItemDiv.style.marginLeft = '10px';
+              capecItemDiv.innerHTML = `<strong>${capecKey}:</strong>`;
+              let capecSubDict = value[capecKey];
+              Object.keys(capecSubDict).forEach(subKey => {
+                  let subItemElement = document.createElement('div');
+                  subItemElement.classList.add('capec-subitem');
+                  subItemElement.innerHTML = `<strong class='capec-subitem-key'>${subKey}:</strong> ${capecSubDict[subKey]}`;
+                  capecItemDiv.appendChild(subItemElement);
+              });
+              capecDiv.appendChild(capecItemDiv);
+          });
+          element.appendChild(capecDiv);
+        }
+        else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+            // Handle other objects (iterate through key-value pairs)
+            let subDiv = document.createElement('div');
+            subDiv.classList.add('object-section');
+            subDiv.style.marginLeft = '10px';
+            //subDiv.innerHTML = `<strong>${key}:</strong>`;
+            Object.keys(value).forEach(subKey => {
+                let subItemElement = document.createElement('div');
+                // Add class based on specific sub-keys
+                switch (subKey) {
+                    case 'id':
+                    case 'name':
+                    case 'prerequisites':
+                    case 'related_weakness':
+                    case 'solutions':
+                        subItemElement.classList.add('sub-key'); // Customize this class name
+                        break;
+                    default:
+                        subItemElement.classList.add('object-item');
+                }
+                subItemElement.innerHTML = `<strong>${subKey}:</strong> ${value[subKey]}`;
+                subDiv.appendChild(subItemElement);
+            });
+            element.appendChild(subDiv);
+        } else if (Array.isArray(value)) {
+            // Handle arrays (lists)
+            let subDiv = document.createElement('div');
+            subDiv.classList.add('array-section');
+            subDiv.style.marginLeft = '10px';
+            //subDiv.innerHTML = `<strong>${key}:</strong>`;
+            value.forEach(item => {
+                let itemElement = document.createElement('div');
+                itemElement.classList.add('array-item');
+                itemElement.innerHTML = JSON.stringify(item); // Convert item to string representation
+                subDiv.appendChild(itemElement);
+            });
+            element.appendChild(subDiv);
+        } else {
+            // Handle other types (strings, numbers, etc.)
+            let valueElement = document.createElement('div');
+            valueElement.classList.add('result-value');
+            valueElement.innerHTML = `${value}`;
+            element.appendChild(valueElement);
+        }
+
+        div_cve_result_holder.appendChild(element);
+      };
+      // Iterate over keys in the data object
+      Object.keys(data).forEach(key => {
+          if (!shouldIgnoreKey(key)) {
+              let value = data[key];
+              appendToResultHolder(key, value);
+          }
+      });
+        
+        
+      
+        }catch(error){
+          console.log(error);
+          alert('This CVE-ID is not found, or we have errors at the system level, correct your input or try again later');
+        }finally{
+          setIsButtonDisabled(false) // reenable the button
+        }
+
+
 
       }
 
@@ -176,7 +404,7 @@ export default function CVEsSearch() {
                                   <p>Explore the afected products of a given vendor that has the security vulnerabilities
                                     discovered in them.</p>
                                     <p>Enter a vendor name</p>
-                                   <input required id=""></input><br/> <br/>
+                                   <input required id="supp_vendor_name"></input><br/> <br/>
                                    <button className='common_button' type="submit" disabled={isButtonDisabled}> {isButtonDisabled ? 'Loading Data ...' : 'Search for vendors product'}</button>
                                </form>
                             </div>
@@ -185,7 +413,7 @@ export default function CVEsSearch() {
                                <form className="cve_input_form" onSubmit={data_by_cve_id}>
                                     <p>Search for a vulnerability by it's CVE-ID.</p>
                                     <p>Enter a cve id (i.e: CVE-xxxx-xxxxx)</p>
-                                    <input required id=""></input><br/> <br/>
+                                    <input required id="supp_cve_id"></input><br/> <br/>
                                     <button className='common_button' type="submit" disabled={isButtonDisabled}>{isButtonDisabled ? 'Loading Data ...' : 'Get CVE data'}</button>
                                 </form>
                              </div>

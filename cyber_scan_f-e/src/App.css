@@ -710,7 +710,7 @@ align-items: center;
   height: 30px;
 }
 .logout_txt {
-  font-weight: bold;
+  
   font-size: small;
 }
 .cves_data_entry_field {
@@ -740,11 +740,11 @@ align-items: center;
 }
 .cve_holder_div {
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
 }
 .cve_db_elem_holder {
   width: 250px;
@@ -755,4 +755,73 @@ align-items: center;
   margin: 10px;
     background-color: whitesmoke;
     text-align: center;
+}
+.result-item {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-key {
+  font-weight: bold;
+}
+
+.result-value {
+  margin-left: 10px;
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+}
+
+.reference-links {
+  margin-left: 10px;
+}
+
+.capec-section {
+  margin-left: 10px;
+}
+
+.capec-item {
+  margin-left: 10px;
+}
+
+.capec-subitem {
+  margin-left: 10px;
+}
+
+.object-section {
+  margin-left: 10px;
+}
+
+.object-item {
+  margin-left: 10px;
+}
+
+.array-section {
+  margin-left: 10px;
+}
+
+.array-item {
+  margin-left: 10px;
+}
+
+/* Optional: Adjust these styles based on your specific design requirements */
+.vendor_list_holder{
+ margin:10px;
+} 
+.vendor_name_num_holder{
+ margin:10px;
+}
+.vendor_elem_div{
+ margin:10px;  
+}
+sub-key {
+  color: red;
+}
+.capec-subitem-key {
+  color:red;
+  margin-right: 5px;
 }

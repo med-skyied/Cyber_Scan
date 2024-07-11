@@ -825,3 +825,48 @@ sub-key {
   color:red;
   margin-right: 5px;
 }
+.login_error_holder {
+  margin: 20px;
+}
+
+.login_error_header {
+  text-align: center;
+  color:red;
+}
+.succ_header {
+  text-align: center;
+  color: green;
+}
+.page-not-found-404 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.service_about_short_discreption{
+ margin-left: 10px;
+ color: black;
+}
+.service_title {
+  color: red;
+}
+.services_provided {
+  text-align: center;
+  font-size: medium;
+}
+.creator_section {
+  text-align: center;
+  color: blue;
+
+}
+.author_socials {
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.creator_name {
+  color: gold;
+}

@@ -73,6 +73,14 @@ This project provides the following services to it's users:
 	
 ##### The back-end folder is under: cyber_scan_b-e/
 ##### The front-end folder is under: cyber_sca_f-e/
+#### User Envirement variables:
+	This application required three invarement variables to function normally. these variables hilds the deffirent api keys that goes with each request:
+
+	VIEW_DNS_KEY => https://viewdns.info
+	SERPER_API_KEY => google.serper.dev (https://serper.dev [as a web site])
+	IP_HUB_KEY => http://iphub.info/
+
+	you can set these variuables by creating anaccount on theire websites then get your key and use this command: $ export [variable_name]=[variable value (make sure to use '' (as these values are strings))] 
 
 #### Note: because of time constrainght i havent implemented a real authentication system, the app now can be accessed via this credentials:
 	username: cyber_admin

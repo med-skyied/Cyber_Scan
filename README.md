@@ -80,7 +80,7 @@ This project provides the following services to it's users:
 	SERPER_API_KEY => google.serper.dev (https://serper.dev [as a web site])
 	IP_HUB_KEY => http://iphub.info/
 
-	you can set these variuables by creating anaccount on theire websites then get your key and use this command: $ export [variable_name]=[variable value (make sure to use '' (as these values are strings))] 
+	you can set these variables by creating an account on theire respective websites then get your key and use this command: $ export [variable_name]=[variable value (make sure to use '' (as these values are strings, and no space around the '='))] 
 
 #### Note: Because of time constraints I haven't implemented a real authentication system, this app can be accessed via these credentials:</span>
 	email/username: admin@cyberscanamch.com || cyber_admin 

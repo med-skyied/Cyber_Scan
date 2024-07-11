@@ -10,8 +10,20 @@ import NavBarChildLogin from '../components/NavBarChildLogin';
 function Home() {
   const navigate = useNavigate();
 
+
+  function is_user_authenticated(){
+    let hard_coded_hash_value = 'YTER4341112!@#$!SDFCCYBRT_SCAN&&$$%@#$@#%TGDSF$@C%%&N)^N$%VWQCR$R';
+    let auth_local_strg_value = localStorage.getItem('user_auth_state');
+    if (auth_local_strg_value === hard_coded_hash_value){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  let user_authenticated = is_user_authenticated();
   // determing the authentication state of the user.
-  const user_authenticated = false;
 
 
   function find_my_ip(){

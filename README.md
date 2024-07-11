@@ -75,7 +75,7 @@ This project provides the following services to it's users:
 ##### The front-end folder is under: cyber_sca_f-e/
 
 #### Note: Because of time constraints I haven't implemented a real authentication system, this app can be accessed via these credentials:</span>
-	username: cyber_admin
+	email/username: admin@cyberscanamch.com || cyber_admin 
 	password: admin20240711
 
 

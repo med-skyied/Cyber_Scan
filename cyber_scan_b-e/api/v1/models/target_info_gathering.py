@@ -11,7 +11,7 @@ import json
 def gather_target_info(supplied_target):
     """ retreives general informations about a given target based on Google search engine """
     #shodan_api = os.getenv('SHODAN_API')
-    surper_api = os.getenv('SURPER_API_KEY')
+    surper_api = os.getenv('SERPER_API_KEY')
     print(surper_api)
     try:
         base_url = 'https://google.serper.dev/search' # using the google surper API as entry

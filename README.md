@@ -1,6 +1,6 @@
 
 # Cyber Scan
-#img[]
+![cyber scan main page screen shot](https://github.com/amch-med23/Cyber_scan/blob/master/imgs/cyber_scan_screen_shot.png?raw=true)
 
 ### This is a Cyber ecurity project, This project will be a tool to get infromations and analyse Targets. and will present the data in a Cyber Security Maner.
 This tool provides a cyber security analyst with tools to gather information and evaluate the security aspects of a target. be it a person or a system or everything in between.
@@ -55,7 +55,7 @@ This project provides the following services to it's users:
 		#### circl.lu (Computer Incident Response Center Luxembourg)
 
 #### To start this application:	
-	start the back-end going to the back-end folder and typing: ```python3 -m api.v1.app```
+	start the back-end by going to the back-end folder and typing: ```python3 -m api.v1.app```
 	to start the front-end app, to to the front-end folder and type: ``` npm install | npm start```
 
 	the flask application requires few additional libraries includiing:

@@ -2,7 +2,7 @@
 # Cyber Scan
 ![cyber scan main page screen shot](https://github.com/amch-med23/Cyber_scan/blob/master/imgs/cyber_scan_screen_shot.png?raw=true)
 
-### This is a Cyber Security project, This project is intended be a tool to get informations and analyse Targets. and will present the data in a Cyber Security Manner.
+### This is a Cyber Security project, This project is intended to be a tool to gather informations and analyse Targets. and will present the data in a Cyber Security Manner.
 This tool provides a cyber security analyst with tools to gather informations and evaluate the security aspects of a target. be it a person or a system or everything in between.
 
 This project provides the following services to it's users:
@@ -24,7 +24,7 @@ This project provides the following services to it's users:
 	This Shows the HTTP headers that your client sends when connecting to a webserver. (importing to know how much data youreveal about your self.)
 
 ##### -> IP Address History:
-	One of the most important steps to gather infotmations about a target is to observe the history of the assigned ip addresses, This is important in forensics analysis.
+	One of the most important steps to gather informations about a target is to observe the history of the assigned ip addresses, This is important in forensics analysis.
 ##### -> My IP Address:
 	A simple tool to show your Ip address as seen in the internet.
 ##### -> Scan a target for open common ports:
